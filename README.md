@@ -3,6 +3,7 @@ This app for get 5 days/3hours forecast information for a city.
 Below you will find some information on how to perform common tasks.<br>
 
 ## Prerequisites
+* Clone this repo on your local system
 * Put your openweathermap api key in .env
 * Put openweathermap api url in .env
 
