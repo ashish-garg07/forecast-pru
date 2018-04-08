@@ -9,13 +9,15 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.callApi()
+    let port = process.env.PORT || 8080;
+    let api_host = 'http://localhost:'+port;
+    this.callApi(api_host)
       .then(res => this.setState({ response: res.weather }))
       .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const response = await fetch('/forecast');
+  callApi = async (api_host) => {
+    const response = await fetch(api_host+'/forecast');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
