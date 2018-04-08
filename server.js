@@ -7,7 +7,7 @@ const path = require('path');
 let { join } = require('path');
 let request = require('request');
 const app = express();
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 if (process.env.NODE_ENV !== 'production') {
   let dotenv = require('dotenv');
