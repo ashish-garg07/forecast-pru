@@ -17,18 +17,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 let apiKey = process.env.WEATHER_API_KEY;
-let url = process.env.WEATHER_URL+'?q=LONDON&appid='+apiKey+'&units=metric';
+// let url = process.env.WEATHER_URL+'?q=LONDON&appid='+apiKey+'&units=metric';
 
-app.get('/forecast', function (req, res) {
+app.get('/forecast/:location', function (req, res) {
+  let loc = req.params.location;
+  console.log(loc);
+  let url = process.env.WEATHER_URL+'?q='+loc+'&appid='+apiKey+'&units=metric';
   request(url, function (err, response, body) {
     if(err){
       console.log('error:', err);
     } else {
       let weather = JSON.parse(body);
 
-      let message = `It's ${weather.list[0].main.temp} degrees in
-               ${weather.city.name}!`;
-      console.log(message);
+      let message = weather;
+      console.log(weather);
       res.send({weather:message});
     }
   });
