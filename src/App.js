@@ -11,6 +11,7 @@ class App extends Component {
   componentDidMount() {
     let port = process.env.PORT || 8080;
     let api_host = 'http://localhost:'+port;
+    console.log(api_host);
     this.callApi(api_host)
       .then(res => this.setState({ response: res.weather }))
       .catch(err => console.log(err));
