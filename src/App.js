@@ -10,7 +10,7 @@ class App extends Component {
 
   componentDidMount() {
     let port = process.env.PORT || 8080;
-    let api_host = 'https://localhost:'+port;
+    let api_host = 'https://intense-inlet-31084.herokuapp.com/';
     console.log(api_host);
     this.callApi(api_host)
       .then(res => this.setState({ response: res.weather }))
