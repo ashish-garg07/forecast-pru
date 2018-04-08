@@ -9,16 +9,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    let port = process.env.PORT || 8080;
-    let api_host = 'https://intense-inlet-31084.herokuapp.com';
-    console.log(api_host);
-    this.callApi(api_host)
+    this.callApi()
       .then(res => this.setState({ response: res.weather }))
       .catch(err => console.log(err));
   }
 
-  callApi = async (api_host) => {
-    const response = await fetch(api_host+'/forecast');
+  callApi = async () => {
+    const response = await fetch('/forecast');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
